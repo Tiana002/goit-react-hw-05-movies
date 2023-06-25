@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from 'GlobalStyle.jsx';
 import { Container } from './Container.styled';
-import Home from '../components/pages/Home';
 import LayoutHeader from './LayoutHeader/LayoutHeader';
 import { Suspense, lazy } from 'react';
 
+const Home = lazy(() => import('components/pages/Home'));
 const MovieDetails = lazy(() => import('./pages/MovieDetails'));
 const Movies = lazy(() => import('./pages/Movies'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
@@ -16,7 +16,7 @@ export const App = () => {
       <Suspense>
         <Routes>
           <Route path="/" element={<LayoutHeader />}>
-            <Route path="/" element={<Home />} />
+          <Route index element={<Home />} />
 
             <Route path="/movies" element={<Movies />} />
 
